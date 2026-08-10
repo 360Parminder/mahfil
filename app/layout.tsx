@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "Mahfil",
     images: [
       {
-        url: "/images/mahfil.png",
+        url: "https://res.cloudinary.com/dvo4tvvgb/image/upload/v1786394847/Profile/mahfil_wfx2rg.png",
         width: 1200,
         height: 630,
         alt: "Mahfil",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mahfil | एक सुरीली शाम",
     description: "A nostalgic retro Indian aesthetic lounge player",
-    images: ["/images/mahfil.png"],
+    images: ["https://res.cloudinary.com/dvo4tvvgb/image/upload/v1786394847/Profile/mahfil_wfx2rg.png"],
   },
 };
 
