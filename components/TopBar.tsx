@@ -13,6 +13,8 @@ import {
 
 
 
+import { SpotifyLogo, YoutubeMusicLogo } from './icons/CustomLogos';
+
 interface TopBarProps {
   onlineCount: number;
   isMuted: boolean;
@@ -59,14 +61,14 @@ export default function TopBar({
     <header className="fixed top-0 left-0 right-0 z-30 px-6 py-4 flex items-center justify-between pointer-events-none">
       {/* Left: Clock */}
       <div className="pointer-events-auto flex items-center gap-3">
-        <div className="text-xs sm:text-sm font-medium tracking-wide text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] select-none">
+        <div className="text-xs sm:text-sm font-medium tracking-wide text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] select-none">
           {timeStr}
         </div>
       </div>
 
-      {/* Center: Live Online Status Pill */}
-      <div className="pointer-events-auto">
-        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/20 backdrop-blur-xs border border-white/10 text-xs sm:text-sm font-medium text-white/95 shadow-md select-none">
+      {/* Center: Live Online Status (Absolute Center - No Background/Border) */}
+      <div className="pointer-events-auto absolute left-1/2 -translate-x-1/2 top-4">
+        <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] select-none">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -77,12 +79,12 @@ export default function TopBar({
         </div>
       </div>
 
-      {/* Right: Platform Action Pills & Controls */}
-      <div className="pointer-events-auto flex items-center gap-2 sm:gap-3">
+      {/* Right: Platform Action Links & Controls (No Background/Borders) */}
+      <div className="pointer-events-auto flex items-center gap-3 sm:gap-4">
         {/* Mute Quick Toggle */}
         <button
           onClick={toggleMute}
-          className="p-2 rounded-full bg-black/35 backdrop-blur-md border border-white/10 text-white/80 hover:text-white hover:bg-black/50 transition-all"
+          className="p-1 text-white/90 hover:text-white transition-all drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
           title={isMuted ? 'Unmute' : 'Mute'}
         >
           {isMuted ? (
@@ -95,35 +97,34 @@ export default function TopBar({
         {/* Fullscreen Toggle */}
         <button
           onClick={toggleFullscreen}
-          className="hidden sm:flex p-2 rounded-full bg-black/35 backdrop-blur-md border border-white/10 text-white/80 hover:text-white hover:bg-black/50 transition-all"
+          className="hidden sm:flex p-1 text-white/90 hover:text-white transition-all drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
           title="Toggle Fullscreen"
         >
           {isFullscreen ? <Minimize04Icon className="w-4 h-4" /> : <Maximize04Icon className="w-4 h-4" />}
         </button>
 
-
-        {/* Spotify Pill */}
+        {/* Spotify Link */}
         <a
           href="https://open.spotify.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/35 backdrop-blur-md border border-white/10 text-xs font-medium text-white/90 hover:text-white hover:bg-black/50 hover:border-emerald-500/40 transition-all group"
+          className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-white hover:text-emerald-300 transition-all drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] group"
         >
-          <SpotifyIcon className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+          <SpotifyLogo className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
           <span className="hidden xs:inline">Spotify</span>
-          <ArrowUpRight01Icon className="w-3 h-3 text-white/50 group-hover:text-white transition-colors" />
+          <ArrowUpRight01Icon className="w-3 h-3 text-white/70 group-hover:text-white transition-colors" />
         </a>
 
-        {/* YT Music Pill */}
+        {/* YT Music Link */}
         <a
           href="https://music.youtube.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/35 backdrop-blur-md border border-white/10 text-xs font-medium text-white/90 hover:text-white hover:bg-black/50 hover:border-red-500/40 transition-all group"
+          className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-white hover:text-red-400 transition-all drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] group"
         >
-          <YoutubeIcon className="w-3.5 h-3.5 text-red-500 group-hover:scale-110 transition-transform" />
+          <YoutubeMusicLogo className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
           <span className="hidden xs:inline">YT Music</span>
-          <ArrowUpRight01Icon className="w-3 h-3 text-white/50 group-hover:text-white transition-colors" />
+          <ArrowUpRight01Icon className="w-3 h-3 text-white/70 group-hover:text-white transition-colors" />
         </a>
       </div>
     </header>

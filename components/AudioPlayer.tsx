@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
+import { YoutubeMusicLogo } from './icons/CustomLogos';
 import {
   PlayIcon,
   PauseIcon,
@@ -9,8 +10,6 @@ import {
   NextIcon,
   VolumeHighIcon,
   VolumeOffIcon,
-  Playlist01Icon,
-  YoutubeIcon,
 } from 'hugeicons-react';
 
 interface AudioPlayerProps {
@@ -279,7 +278,7 @@ export default function AudioPlayer({
           {/* Song Title & Artist */}
           <div className="flex items-center justify-between gap-2">
             <div className="min-w-0 flex items-center gap-1.5">
-              <YoutubeIcon className="w-3.5 h-3.5 text-red-500 shrink-0" />
+              <YoutubeMusicLogo className="w-4 h-4 text-white shrink-0" />
               <div className="min-w-0">
                 <h3 className="text-xs sm:text-sm font-semibold text-white tracking-wide truncate max-w-[170px] sm:max-w-[210px]">
                   {songTitle}
