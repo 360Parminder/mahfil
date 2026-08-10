@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import clsx from "clsx";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://mahfil.parminder.pro'),
@@ -43,6 +44,7 @@ export default function RootLayout({
     <html lang="en" className={clsx('h-full', 'antialiased', 'dark')}>
       <body className={clsx('min-h-full', 'h-screen', 'w-screen', 'overflow-hidden', 'flex', 'flex-col', 'bg-black', 'text-white', 'font-sans')}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
