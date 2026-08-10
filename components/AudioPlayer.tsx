@@ -114,27 +114,47 @@ export default function AudioPlayer({
     const handleFirstInteraction = () => {
       if (playerRef.current && isPlayerReady) {
         try {
+          if (!isMuted) {
+            playerRef.current.unMute();
+          }
           playerRef.current.playVideo();
         } catch (e) {}
       }
     };
     window.addEventListener('click', handleFirstInteraction, { once: true });
+    window.addEventListener('pointerdown', handleFirstInteraction, { once: true });
+    window.addEventListener('touchstart', handleFirstInteraction, { once: true });
     window.addEventListener('keydown', handleFirstInteraction, { once: true });
     return () => {
       window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('pointerdown', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
       window.removeEventListener('keydown', handleFirstInteraction);
     };
-  }, [isPlayerReady]);
+  }, [isPlayerReady, isMuted]);
 
   const onReady: YouTubeProps['onReady'] = (event) => {
     playerRef.current = event.target;
     setIsPlayerReady(true);
     event.target.setVolume(volume * 100);
     if (isMuted) event.target.mute();
-    // Instant autoplay on player ready
-    try {
-      event.target.playVideo();
-    } catch (e) {}
+
+    if (isPlaying) {
+      try {
+        const playResult = event.target.playVideo();
+        if (playResult && typeof playResult.catch === 'function') {
+          playResult.catch(() => {
+            event.target.mute();
+            event.target.playVideo();
+          });
+        }
+      } catch (e) {
+        try {
+          event.target.mute();
+          event.target.playVideo();
+        } catch (err) {}
+      }
+    }
   };
 
   const onStateChange: YouTubeProps['onStateChange'] = (event) => {

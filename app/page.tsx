@@ -7,8 +7,8 @@ import { useRealtimePresence } from '@/hooks/useRealtimePresence';
 import clsx from 'clsx';
 
 export default function MahfilHome() {
-  const [playlistId, setPlaylistId] = useState<string>('PLNZARFiARTKJZttN0PIZuUo6dV2sIFacS');
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [playlistId, setPlaylistId] = useState<string>('PLNZARFiARTKLIaccH51rzcxpyr49EOGmZ');
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [currentBg, setCurrentBg] = useState<string>('/images/mahfil.png');
 
